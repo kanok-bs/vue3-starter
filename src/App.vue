@@ -1,7 +1,7 @@
 <template>
   <main>
     <Sidebar />
-    <div class="container">
+    <div class="container" style="margin-top:60px">
       <router-view />
     </div>
   </main>
