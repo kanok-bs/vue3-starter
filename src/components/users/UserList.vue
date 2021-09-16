@@ -12,11 +12,11 @@ const props = defineProps({
 </script>
 
 <template>
-  <h3>Users</h3>
+  <h3><i class="bi bi-alarm-fill"></i> Users</h3>
+  <hr />
   <div class="card">
     <div class="card-header">
-      <h5 class="card-title">User List</h5>
-      <router-link to="useradd" class="btn btn-success">Create</router-link>
+      <router-link to="useradd" class="btn btn-success">New User</router-link>
     </div>
     <div class="card-body">
       <table class="table">
@@ -32,10 +32,10 @@ const props = defineProps({
         <tbody>
           <tr v-for="u in props.users" :key="u.name">
             <td>{{ u.name }}</td>
-            <td>{{ u.countries.name }}</td>
-            <td>{{ u.countries.borders }}</td>
-            <td>{{ u.countries.currencies[0].name }}</td>
-            <td>{{ u.countries.languages }}</td>
+            <td>{{ u.countries?.name }}</td>
+            <td>{{ u.countries?.borders }}</td>
+            <td>{{ u.countries?.currencies[0].name }}</td>
+            <td>{{ u.countries?.languages }}</td>
           </tr>
         </tbody>
       </table>
