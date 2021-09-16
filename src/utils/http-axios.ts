@@ -11,7 +11,7 @@ const axios: AxiosInstance = Axios.create({
 const notyf = useNotyf();
 axios.defaults.timeout = 10000;
 axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
-axios.defaults.baseURL = 'http://localhost:8080/'
+axios.defaults.baseURL = "https://restcountries.eu/rest/v2/";
 
 axios.interceptors.response.use(
   (response) => {

@@ -22,6 +22,12 @@ const routes: Array<RouteRecordRaw> = [
     component: () =>
       import("../views/users/UserView.vue"),
   },
+  {
+    path: "/useradd",
+    name: "useradd",
+    component: () =>
+      import("../views/users/AddUserView.vue"),
+  },
 ];
 
 const router = createRouter({

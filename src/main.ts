@@ -6,6 +6,7 @@ import "bootstrap";
 import Sidebar from "./components/shared/Sidebar.vue";
 import Navbar from "./components/shared/Navbar.vue";
 import UserList from "./components/users/UserList.vue";
+import UserAdd from "./components/users/UserAdd.vue";
 import upperFirst from "lodash/upperFirst";
 import camelCase from "lodash/camelCase";
 const requireComponent = require.context(
@@ -18,6 +19,7 @@ const app = createApp(App);
 app.component("Sidebar", Sidebar);
 app.component("Navbar", Navbar);
 app.component("UserList", UserList);
+app.component("UserAdd", UserAdd);
 requireComponent.keys().forEach((fileName: string) => {
   const componentConfig = requireComponent(fileName);
 

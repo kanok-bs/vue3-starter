@@ -1,61 +1,40 @@
 <script setup lang="ts">
 import useNotyf from "./../../utils/useNotyf";
 const notyf = useNotyf();
+import { defineProps, reactive, toRefs } from "vue";
+import { user } from "@/models/user";
+import { userState } from "@/states/userstate";
+
+const { users } = toRefs(userState);
+
+const props = defineProps({
+  countries: {
+    type: Array,
+  },
+});
+const input = reactive<user>({} as any)
+const Add = () => {
+  users.value.push(input);
+  notyf.success('Save Succesfull')
+};
 </script>
 
 <template>
-  <form>
+  <form @submit.prevent="Add">
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="inputEmail4">Email</label>
-        <input type="email" class="form-control" id="inputEmail4" />
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputPassword4">Password</label>
-        <input type="password" class="form-control" id="inputPassword4" />
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="inputAddress">Address</label>
-      <input
-        type="text"
-        class="form-control"
-        id="inputAddress"
-        placeholder="1234 Main St"
-      />
-    </div>
-    <div class="form-group">
-      <label for="inputAddress2">Address 2</label>
-      <input
-        type="text"
-        class="form-control"
-        id="inputAddress2"
-        placeholder="Apartment, studio, or floor"
-      />
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputCity">City</label>
-        <input type="text" class="form-control" id="inputCity" />
+        <label for="inputEmail4">Name</label>
+        <input type="text" class="form-control" v-model="input.name" />
       </div>
       <div class="form-group col-md-4">
-        <label for="inputState">State</label>
-        <select id="inputState" class="form-control">
-          <option selected>Choose...</option>
-          <option>...</option>
+        <label for="inputState">Countries</label>
+        <select class="form-control" v-model="input.countries">
+          <option v-for="c in props.countries" :key="c.name" :value="c">
+            {{ c.name }}
+          </option>
         </select>
       </div>
-      <div class="form-group col-md-2">
-        <label for="inputZip">Zip</label>
-        <input type="text" class="form-control" id="inputZip" />
-      </div>
     </div>
-    <div class="form-group">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck" />
-        <label class="form-check-label" for="gridCheck"> Check me out </label>
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Sign in</button>
+    <button class="btn btn-primary">Save</button>
   </form>
 </template>

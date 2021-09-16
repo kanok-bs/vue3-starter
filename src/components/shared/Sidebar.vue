@@ -34,6 +34,7 @@
         <div class="collapse" id="dashboard-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <li><router-link to="userlist" class="link-dark rounded">User List</router-link></li>
+            <li><router-link to="useradd" class="link-dark rounded">User Add</router-link></li>
           </ul>
         </div>
       </li>
