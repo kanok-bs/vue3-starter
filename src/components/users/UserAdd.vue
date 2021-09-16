@@ -37,6 +37,8 @@ const Add = () => {
         </select>
       </div>
     </div>
-    <button class="btn btn-primary">Save</button>
+    <div class="from-group mt-4">
+      <button class="btn btn-primary">Save</button>
+    </div>
   </form>
 </template>
