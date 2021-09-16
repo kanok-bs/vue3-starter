@@ -9,6 +9,7 @@ import UserList from "./components/users/UserList.vue";
 import UserAdd from "./components/users/UserAdd.vue";
 import upperFirst from "lodash/upperFirst";
 import camelCase from "lodash/camelCase";
+import Multiselect from "@vueform/multiselect";
 const requireComponent = require.context(
   "./components",
   false,
@@ -20,6 +21,7 @@ app.component("Sidebar", Sidebar);
 app.component("Navbar", Navbar);
 app.component("UserList", UserList);
 app.component("UserAdd", UserAdd);
+app.component("Multiselect", Multiselect);
 requireComponent.keys().forEach((fileName: string) => {
   const componentConfig = requireComponent(fileName);
 
