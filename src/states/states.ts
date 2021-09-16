@@ -9,5 +9,11 @@ export const userState = reactive({
 export const countryState = reactive({
   countries: ref([] as any),
   error: null,
-  userunit: ref({})
+  userunit: ref({}),
+});
+
+export const loginState = reactive({
+  username: ref(""),
+  IsAuthenticated: ref(false),
+  error: null,
 });

@@ -2,7 +2,7 @@
 import useNotyf from "./../../utils/useNotyf";
 import { CountryServices } from "./../../services/countryservice";
 import { onMounted, toRefs } from "vue";
-import { countryState } from "@/states/userstate";
+import { countryState } from "@/states/states";
 const notyf = useNotyf();
 
 const countryServices = new CountryServices();
