@@ -9,9 +9,8 @@ export class CountryServices {
     return response.data;
   }
 
-  public async getByRegionalbloc(id: string): Promise<user[]> {
-    const query = `user?partnerId=${id}`;
-    const response = await axios.get(query);
+  public async getByRegionalbloc(id: string): Promise<user[]> {    
+    const response = await axios.get("all");
     return response.data;
   }
 
