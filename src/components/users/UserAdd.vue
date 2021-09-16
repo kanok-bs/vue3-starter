@@ -4,18 +4,20 @@ const notyf = useNotyf();
 import { defineProps, reactive, toRefs } from "vue";
 import { user } from "@/models/user";
 import { userState } from "@/states/userstate";
+import { useRouter } from "vue-router";
 
 const { users } = toRefs(userState);
-
+const router = useRouter();
 const props = defineProps({
   countries: {
     type: Array,
   },
 });
-const input = reactive<user>({} as any)
+const input = reactive<user>({} as any);
 const Add = () => {
   users.value.push(input);
-  notyf.success('Save Succesfull')
+  router.push({ name: "userlist" });
+  notyf.success("Save Succesfull");
 };
 </script>
 
