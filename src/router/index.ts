@@ -1,32 +1,36 @@
+import { AuthGuard } from "@/utils/auth";
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Home from "../views/Home.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    name: "Home",
+    name: "",
+    beforeEnter: AuthGuard,
     component: Home,
+    redirect:"Home",
+    children: [
+      {
+        path: "/home",
+        name: "Home",
+        component: () => import("../views/Dashboard.vue"),
+      },
+      {
+        path: "/userlist",
+        name: "userlist",
+        component: () => import("../views/users/UserView.vue"),
+      },
+      {
+        path: "/useradd",
+        name: "useradd",
+        component: () => import("../views/users/AddUserView.vue"),
+      },
+    ],
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
-  },
-  {
-    path: "/userlist",
-    name: "userlist",
-    component: () =>
-      import("../views/users/UserView.vue"),
-  },
-  {
-    path: "/useradd",
-    name: "useradd",
-    component: () =>
-      import("../views/users/AddUserView.vue"),
+    path: "/login",
+    name: "login",
+    component: () => import("../views/Login.vue"),
   },
 ];
 

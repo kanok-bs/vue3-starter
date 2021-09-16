@@ -3,7 +3,7 @@ import useNotyf from "./../../utils/useNotyf";
 const notyf = useNotyf();
 import { defineProps, reactive, toRefs } from "vue";
 import { user } from "@/models/user";
-import { userState } from "@/states/userstate";
+import { userState } from "@/states/states";
 import { useRouter } from "vue-router";
 
 const { users } = toRefs(userState);
@@ -37,6 +37,8 @@ const Add = () => {
         </select>
       </div>
     </div>
-    <button class="btn btn-primary">Save</button>
+    <div class="from-group mt-4">
+      <button class="btn btn-primary">Save</button>
+    </div>
   </form>
 </template>
