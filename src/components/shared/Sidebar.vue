@@ -1,26 +1,27 @@
 <template>
-<navbar />
+  <navbar />
   <div
     class="flex-shrink-0 p-3 bg-white shadow"
-    style="width: 280px; height: 100vh; margin-top:50px"
+    style="width: 280px; height: 100vh; margin-top: 60px"
   >
-    <a
-      href="/"
-      class="
-        d-flex
-        align-items-center
-        pb-3
-        mb-3
-        link-dark
-        text-decoration-none
-        border-bottom
-      "
-    >
-      <svg class="bi me-2" width="30" height="24">
-        <use xlink:href="#bootstrap" />
-      </svg>
-      <span class="fs-5 fw-semibold">Collapsible</span>
-    </a>
+    <router-link to="/home">
+      <a
+        class=" text-decoration-underline
+          d-flex
+          align-items-center
+          pb-3
+          mb-3
+          link-dark
+          text-decoration-none
+          border-bottom          
+        "
+      >
+        <svg class="bi me-2" width="30" height="24">
+          <use xlink:href="#bootstrap" />
+        </svg>
+        <span class="fs-5 fw-semibold">Dashboard</span>
+      </a>
+    </router-link>
     <ul class="list-unstyled ps-0">
       <li class="mb-1">
         <button
@@ -33,8 +34,16 @@
         </button>
         <div class="collapse" id="dashboard-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><router-link to="userlist" class="link-dark rounded">User List</router-link></li>
-            <li><router-link to="useradd" class="link-dark rounded">User Add</router-link></li>
+            <li>
+              <router-link to="userlist" class="link-dark rounded"
+                >User List</router-link
+              >
+            </li>
+            <li>
+              <router-link to="useradd" class="link-dark rounded"
+                >User Add</router-link
+              >
+            </li>
           </ul>
         </div>
       </li>
