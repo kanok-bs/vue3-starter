@@ -7,7 +7,7 @@ export const userState = reactive({
 });
 
 export const countryState = reactive({
-  countries: ref([{name:"BD"},{name:"USA"}] as any),
+  countries: ref([] as any),
   error: null,
   userunit: ref({}),
 });
