@@ -8,15 +8,14 @@ export class CountryServices {
     countryState.countries = response.data;
     return response.data;
   }
-  public async getSpecificCountry(slug:string): Promise<any> {
-    const response = await axios.get("name/"+slug);
+  public async getSpecificCountry(slug: string): Promise<any> {
+    const response = await axios.get(`name/${slug}`);
     singleCountryState.singleCountry = response.data[0];
     return response.data;
   }
 
-  public async getByRegionalbloc(id: string): Promise<user[]> {    
+  public async getByRegionalbloc(id: string): Promise<user[]> {
     const response = await axios.get("all");
     return response.data;
   }
-
 }

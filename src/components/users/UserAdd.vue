@@ -19,13 +19,11 @@ const props = defineProps({
   },
 });
 const input = reactive<user>({} as any);
-const addBorders = (event)=>{
-    console.log();
-    const country_name = event.target.value;
-    countryServices.getSpecificCountry(country_name);
+const addBorders = (event) => {
+  console.log();
+  const country_name = event.target.value;
+  countryServices.getSpecificCountry(country_name);
 };
-
-const options = reactive(singleCountry as any);
 
 const Add = () => {
   users.value.push(input);
@@ -44,7 +42,11 @@ const Add = () => {
 
       <div class="form-group col-md-6">
         <label for="inputState">Countries</label>
-        <select @change="addBorders($event)" class="form-control" v-model="input.countries">
+        <select
+          @change="addBorders($event)"
+          class="form-control"
+          v-model="input.countries"
+        >
           <option v-for="(c, key) in props.countries" :key="key">
             {{ c.name.common }}
           </option>
@@ -57,7 +59,7 @@ const Add = () => {
           placeholder="Select your borders"
           mode="multiple"
           :closeOnSelect="false"
-          :options="options.borders"
+          :options="singleCountry.borders"
         >
         </Multiselect>
       </div>
