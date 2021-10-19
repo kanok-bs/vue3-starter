@@ -12,6 +12,12 @@ export const countryState = reactive({
   userunit: ref({}),
 });
 
+export const borderState = reactive({
+  borders: ref([{value:"BD Border"},{value:"USA Border"}] as any),
+  error: null,
+  userunit: ref({}),
+});
+
 export const loginState = reactive({
   username: ref(""),
   IsAuthenticated: ref(false),

@@ -5,4 +5,5 @@ export class user {
   region: "" = "";
   capital: "" = "";
   currency: "" = "";
+  language: any;
 }

@@ -27,15 +27,19 @@ const props = defineProps({
             <th scope="col">Borders</th>
             <th scope="col">Currency</th>
             <th scope="col">Languages</th>
+            <th scope="col">capital</th>
+            <th scope="col">Region</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="u in props.users" :key="u.name">
+          <tr v-for="(u, key) in props.users" :key="key">
             <td>{{ u.name }}</td>
-            <td>{{ u.countries?.name }}</td>
-            <td>{{ u.countries?.borders }}</td>
-            <td>{{ u.countries?.currencies[0].name }}</td>
-            <td>{{ u.countries?.languages }}</td>
+            <td>{{ u.countries ? u.countries : "" }}</td>
+            <td>{{ u.borders ? u.borders[0] : "" }}</td>
+            <td>{{ u.currency?u.currency:"" }}</td>
+            <td>{{ u.language?u.language:"" }}</td>
+            <td>{{ u.capital?u.capital:"" }}</td>
+            <td>{{ u.region?u.region:"" }}</td>
           </tr>
         </tbody>
       </table>

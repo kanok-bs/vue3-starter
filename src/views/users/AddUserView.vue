@@ -2,11 +2,12 @@
 import useNotyf from "./../../utils/useNotyf";
 import { CountryServices } from "./../../services/countryservice";
 import { onMounted, toRefs } from "vue";
-import { countryState } from "@/states/states";
+import { countryState, borderState } from "@/states/states";
 const notyf = useNotyf();
 
 const countryServices = new CountryServices();
 const { countries } = toRefs(countryState);
+const { borders } = toRefs(borderState);
 onMounted(() => {
   countryServices.getAll();
 });
@@ -18,7 +19,7 @@ onMounted(() => {
       <h5 class="card-title">Add User</h5>
     </div>
     <div class="card-body">
-      <UserAdd :countries="countries" />
+      <UserAdd :countries="countries" :borders="borders"  />
     </div>
   </div>
 </template>
