@@ -2,22 +2,31 @@
 import useNotyf from "./../../utils/useNotyf";
 import Multiselect from "@vueform/multiselect";
 const notyf = useNotyf();
-import { defineProps, reactive, toRefs } from "vue";
+import { defineProps, reactive, toRefs, ref, computed } from "vue";
 import { user } from "@/models/user";
 import { userState } from "@/states/states";
 import { useRouter } from "vue-router";
+import { CountryServices } from "./../../services/countryservice";
+import { singleCountryState } from "@/states/states";
+const countryServices = new CountryServices();
 
+const { singleCountry } = toRefs(singleCountryState);
 const { users } = toRefs(userState);
 const router = useRouter();
 const props = defineProps({
   countries: {
     type: Array,
   },
-  borders: {
-    type: Array,
-  },
 });
 const input = reactive<user>({} as any);
+const addBorders = (event)=>{
+    console.log();
+    const country_name = event.target.value;
+    countryServices.getSpecificCountry(country_name);
+};
+
+const options = reactive(singleCountry as any);
+
 const Add = () => {
   users.value.push(input);
   router.push({ name: "userlist" });
@@ -32,10 +41,11 @@ const Add = () => {
         <label for="inputEmail4">Name</label>
         <input type="text" class="form-control" v-model="input.name" />
       </div>
+
       <div class="form-group col-md-6">
         <label for="inputState">Countries</label>
-        <select class="form-control" v-model="input.countries">
-          <option v-for="c in props.countries" :key="c.name" :value="c.name.common">
+        <select @change="addBorders($event)" class="form-control" v-model="input.countries">
+          <option v-for="(c, key) in props.countries" :key="key">
             {{ c.name.common }}
           </option>
         </select>
@@ -43,12 +53,11 @@ const Add = () => {
       <div class="form-group col-md-6">
         <label for="inputState">Borders</label>
         <Multiselect
-          label="value"
           v-model="input.borders"
           placeholder="Select your borders"
-          :options="borders"
           mode="multiple"
           :closeOnSelect="false"
+          :options="options.borders"
         >
         </Multiselect>
       </div>
