@@ -5,6 +5,7 @@ const notyf = useNotyf();
 import { defineProps, reactive, toRefs } from "vue";
 import { user } from "@/models/user";
 import { userState } from "@/states/states";
+import { CountryServices } from "@/services/countryservice";
 import { useRouter } from "vue-router";
 
 const { users } = toRefs(userState);
@@ -27,6 +28,9 @@ const Add = () => {
 <style src="@vueform/multiselect/themes/default.css"></style>
 <template>
   <form @submit.prevent="Add">
+    <pre>
+    -----------> {{CountryServices}}
+    </pre>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="inputEmail4">Name</label>
