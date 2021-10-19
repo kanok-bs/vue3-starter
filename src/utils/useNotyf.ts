@@ -1,4 +1,5 @@
 import { Notyf } from "notyf";
+import 'notyf/notyf.min.css'; //
 import { themeColors } from "./themeColors";
 
 const notyf = new Notyf({
