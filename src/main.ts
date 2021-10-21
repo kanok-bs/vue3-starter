@@ -30,7 +30,6 @@ requireComponent.keys().forEach((fileName: string) => {
   );
 
   app.component(componentName, componentConfig.default || componentConfig);
-  console.log("--------->name", componentName);
 });
 app.use(router).mount("#app");
 
