@@ -14,17 +14,19 @@ const capitalizeFirstLetter = (string:string) => {
 };
 
 const requireComponent = require.context(
-  '.',true,/\.vue$/
+  './components/',true,/\.vue$/
 )
-console.log(requireComponent);
+// console.log("see-context-working---->",requireComponent);
 requireComponent.keys().forEach(fileName => {
+  // console.log("component name-------->", fileName);
   const componentConfig = requireComponent(fileName);
-  const a = fileName.lastIndexOf('/');
-  fileName = '.' + fileName.slice(a);
+  // console.log("config-------->", componentConfig);
+  const webPackName = fileName.lastIndexOf('/');
+  fileName = '.' + fileName.slice(webPackName);
   const componetName = capitalizeFirstLetter(
       fileName.replace(/^\.\//,'').replace(/\.\w+$/,'')
   )
-  console.log("---->",componetName);
+  // console.log("---->",componetName);
   app.component(componetName,componentConfig.default || componentConfig)
 })
 
