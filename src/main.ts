@@ -16,16 +16,16 @@ const capitalizeFirstLetter = (string:string) => {
 const requireComponent = require.context(
   '.',true,/\.vue$/
 )
-
+console.log(requireComponent);
 requireComponent.keys().forEach(fileName => {
-  const componetConfig = requireComponent(fileName);
+  const componentConfig = requireComponent(fileName);
   const a = fileName.lastIndexOf('/');
   fileName = '.' + fileName.slice(a);
   const componetName = capitalizeFirstLetter(
       fileName.replace(/^\.\//,'').replace(/\.\w+$/,'')
   )
   console.log("---->",componetName);
-  app.component(componetName,componetConfig.default || componetConfig)
+  app.component(componetName,componentConfig.default || componentConfig)
 })
 
 app.use(router).mount("#app");
