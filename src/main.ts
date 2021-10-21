@@ -3,33 +3,30 @@ import App from "./App.vue";
 import router from "./router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
-import Sidebar from "./components/shared/Sidebar.vue";
-import Navbar from "./components/shared/Navbar.vue";
-import UserList from "./components/users/UserList.vue";
-import UserAdd from "./components/users/UserAdd.vue";
 import upperFirst from "lodash/upperFirst";
 import camelCase from "lodash/camelCase";
 import Multiselect from "@vueform/multiselect";
-const requireComponent = require.context(
-  "./components",
-  false,
-  /Base[A-Z]\w+\.(vue|js)$/
-);
-
 const app = createApp(App);
-app.component("Sidebar", Sidebar);
-app.component("Navbar", Navbar);
-app.component("UserList", UserList);
-app.component("UserAdd", UserAdd);
 app.component("Multiselect", Multiselect);
-requireComponent.keys().forEach((fileName: string) => {
-  const componentConfig = requireComponent(fileName);
 
-  const componentName = upperFirst(
-    camelCase(fileName.replace(/^\.\/(.*)\.\w+$/, "$1"))
-  );
+const capitalizeFirstLetter = (string:string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
 
-  app.component(componentName, componentConfig.default || componentConfig);
-});
+const requireComponent = require.context(
+  '.',true,/\.vue$/
+)
+
+requireComponent.keys().forEach(fileName => {
+  const componetConfig = requireComponent(fileName);
+  const a = fileName.lastIndexOf('/');
+  fileName = '.' + fileName.slice(a);
+  const componetName = capitalizeFirstLetter(
+      fileName.replace(/^\.\//,'').replace(/\.\w+$/,'')
+  )
+  console.log("---->",componetName);
+  app.component(componetName,componetConfig.default || componetConfig)
+})
+
 app.use(router).mount("#app");
 
