@@ -1,6 +1,6 @@
 import axios from "../utils/http-axios";
 import { user } from "../models/user";
-import { userState, countryState } from "@/states/states";
+import { userState, countryState, singleCountryState } from "@/states/states";
 
 export class CountryServices {
   public async getAll(): Promise<any> {
@@ -8,10 +8,14 @@ export class CountryServices {
     countryState.countries = response.data;
     return response.data;
   }
-
-  public async getByRegionalbloc(id: string): Promise<user[]> {    
-    const response = await axios.get("all");
+  public async getSpecificCountry(slug: string): Promise<any> {
+    const response = await axios.get(`name/${slug}`);
+    singleCountryState.singleCountry = response.data[0];
     return response.data;
   }
 
+  public async getByRegionalbloc(id: string): Promise<user[]> {
+    const response = await axios.get("all");
+    return response.data;
+  }
 }

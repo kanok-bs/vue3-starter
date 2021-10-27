@@ -12,8 +12,8 @@ export const countryState = reactive({
   userunit: ref({}),
 });
 
-export const borderState = reactive({
-  borders: ref([{value:"BD Border"},{value:"USA Border"}] as any),
+export const singleCountryState = reactive({
+  singleCountry: ref([] as any),
   error: null,
   userunit: ref({}),
 });
