@@ -1,6 +1,6 @@
 import axios from "../utils/http-axios";
 import { user } from "../models/user";
-import { userState, countryState, singleCountryState } from "@/states/states";
+import { userState, countryState, singleCountryState } from "../states/states";
 
 export class CountryServices {
   public async getAll(): Promise<any> {

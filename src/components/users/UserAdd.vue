@@ -4,10 +4,10 @@ import Multiselect from "@vueform/multiselect";
 const notyf = useNotyf();
 import { defineProps, reactive, toRefs, ref, computed } from "vue";
 import { user } from "@/models/user";
-import { userState } from "@/states/states";
+import { userState } from "../../states/states";
 import { useRouter } from "vue-router";
 import { CountryServices } from "./../../services/countryservice";
-import { singleCountryState } from "@/states/states";
+import { singleCountryState } from "../../states/states";
 const countryServices = new CountryServices();
 
 const { singleCountry } = toRefs(singleCountryState);

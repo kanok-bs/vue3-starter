@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { loginState } from "@/states/states";
+import { loginState } from "../states/states";
 import { toRefs } from "vue";
 import { useRouter } from "vue-router";
 const { IsAuthenticated } = toRefs(loginState);
