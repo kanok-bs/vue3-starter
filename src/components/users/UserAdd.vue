@@ -19,7 +19,7 @@ const props = defineProps({
   },
 });
 const input = reactive<user>({} as any);
-const addBorders = (event) => {
+const addBorders = (event: any) => {
   console.log();
   const country_name = event.target.value;
   countryServices.getSpecificCountry(country_name);
