@@ -10,7 +10,6 @@ const app = createApp(App);
 app.component("Multiselect", Multiselect);
 
 const components = import.meta.globEager('./components/*/*.vue')
-const vueApp = createApp(App)
 Object.entries(components).forEach(([path, definition]) => {
     const componentName = path.split('/').pop().replace(/\.\w+$/, '')
     app.component(componentName, definition.default)
